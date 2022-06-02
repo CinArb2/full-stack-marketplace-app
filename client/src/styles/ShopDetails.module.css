@@ -27,6 +27,11 @@
   border: 1px solid gray;
 }
 
+.containerLogo img{
+  height: 100%;
+  object-fit: cover;
+}
+
 .shopContent{
   text-align: center;
   position: relative;
