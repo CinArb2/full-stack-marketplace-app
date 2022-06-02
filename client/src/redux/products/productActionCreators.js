@@ -5,7 +5,7 @@ import { getConfig } from '../../helper/getConfig'
 import {  getShopUser } from '../shop/shopActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 
-const API_URL = 'http://localhost:5000/api/v1'
+const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
 
 export const fetchProducts = () => {
   return async (dispatch) => {

@@ -4,7 +4,7 @@ import { getConfig } from '../../helper/getConfig'
 import { setIsLoading } from '../loader/loaderActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 
-const API_URL = 'http://localhost:5000/api/v1'
+const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
 
 export const getProductsCart = ( ) => {
   return (dispatch) => {

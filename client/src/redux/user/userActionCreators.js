@@ -5,7 +5,7 @@ import { setIsLoading } from '../loader/loaderActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 import { getShopUser } from '../shop/shopActionCreators'
 
-const API_URL = 'http://localhost:5000/api/v1'
+const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
 
 
 export const loginUser = (formData) => {
