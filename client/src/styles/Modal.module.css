@@ -1,0 +1,56 @@
+.modalBackdrop{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #ffffffcf;
+  visibility: hidden;
+  z-index: 2;
+}
+
+.modalBackdrop.active{
+  visibility: visible;
+}
+
+.modalWrapper{
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 70%;
+  background-color: white;
+  padding: 1rem;
+  border-left: 1px solid #dbdbdb;
+  transform: translateX(100%);
+  transition: transform 300ms ease-in-out;
+  overflow-y: scroll;
+  display: grid;
+  place-content: center;
+}
+
+.modalWrapper.active{
+  transform: translateX(0);
+}
+
+.closeBtn{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 100;
+}
+
+@media screen and (max-width: 800px){
+  .modalWrapper{
+    left: 40%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .modalWrapper{
+    left: 10%;
+  }
+}

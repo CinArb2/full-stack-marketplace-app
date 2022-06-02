@@ -1,0 +1,35 @@
+.heroContainer{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100%;
+  height: 300px;
+}
+
+.heroText{
+  background-color: #faf4cf;
+  border: 1px solid var(--color-text);
+  display: grid;
+  place-content: center;
+  font-size: clamp(1rem, 5vw, 1.2rem);
+  padding-inline: 1rem;
+  line-height: 1.8;
+}
+
+.imageHero{
+  background-image: url('../../public/images/heroImage.jpg');
+  height: 100%;
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 913px){
+  .heroContainer{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .imageHero{
+    background-position: left;
+  }
+  
+}

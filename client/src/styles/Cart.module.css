@@ -1,0 +1,112 @@
+
+.containerCart{
+  overflow: auto;
+  width: 100%;
+  position: relative;
+}
+
+.cartWrapperLogin{
+  text-align: center;
+}
+
+.loginButton{
+  margin: 2rem auto;
+  background-color: var(--btn-color);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding-block: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 1.2px;
+  color: inherit;
+  display: block;
+  width: 200px;
+}
+
+.cartWrapperLogin p{
+  font-size: 1.3rem;
+}
+/* ---------------------------------------------------- */
+.cartWrapper{
+  text-align: center;
+  position: relative;
+  overflow: auto;
+  padding-block: 2rem;
+  padding-left: 1rem;
+}
+
+.cartList{
+  height: 60vh;
+  overflow: auto;
+}
+
+.cartTitle{
+  color: var(--btn-color);
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.productContainer{
+  margin-block: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.5rem;
+}
+
+.productContainer > *{
+  margin-block: 0.5rem;
+  
+}
+
+.productTag{
+  color: rgb(147, 145, 145);
+}
+
+.btnDelete{
+  background-color: transparent;
+  border: none;
+  font-size: 1.7rem;
+  color: #f85555;
+  cursor: pointer;
+  padding: 1rem;
+}
+.productTitle{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.btnCheckout{
+  margin: 2rem auto;
+  background-color: var(--btn-color);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding-block: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 1.2px;
+  color: inherit;
+  display: block;
+  width: 120px;
+}
+
+.totalContainter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total{
+  color: gray;
+}
+
+.notProducts{
+  display: grid;
+  place-content: center;
+  height: 100%;
+}
+
+@media screen and (max-width: 500px){
+  .total{
+    display: block;
+  }
+}

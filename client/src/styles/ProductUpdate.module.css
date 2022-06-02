@@ -1,0 +1,151 @@
+.containerUpdate{
+  padding: 2rem;
+}
+
+.updateTitle{
+  position: relative;
+  width: fit-content;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.updateTitle::after{
+  content: '';
+  height: 20px;
+  width: 100px;
+  position: absolute;
+  background-color: var(--title-deco);
+  right: -10%;
+  top: 40%;
+  z-index: -1;
+}
+
+.updateText{
+  padding-bottom: 2rem;
+}
+
+.containerInfo{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+
+.cardContainer{
+  padding: 2rem;
+  min-height: 400px;
+  text-align: left;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+}
+
+.inputContainer{
+  margin-block: 1rem;
+}
+
+.inputForm{
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  width: 100%;
+  height: 40px;
+  padding-inline: 1rem;
+}
+
+.inputNumber{
+  margin-left: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding-inline: 1rem;
+}
+
+.inputTextArea{
+  display: block;
+  margin-top: 0.5rem;
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding-inline: 1rem;
+}
+
+.containerBtns{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnSubmit{
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding-block: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 1.2px;
+  color: inherit;
+  display: block;
+  width: 100px;
+  background-color: var(--btn-color);
+}
+
+.btnCancel{
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding-block: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 1.2px;
+  color: inherit;
+  display: block;
+  background-color: var(--btn-selected);
+  width: 100px;
+}
+
+.btnSubmit:hover{
+  background-color: var(--btn-hover);
+}
+
+.btnCancel:hover{
+  background-color: var(--gray-dark-hover);
+}
+
+.inputImg{
+  display: none;
+}
+
+.labelImginput{
+  cursor: pointer;
+}
+
+.labelTextImg{
+  display: block;
+}
+
+.iconImg{
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-text);
+}
+
+@media screen and (max-width: 1224px){
+  .containerInfo{
+    display: block;
+  }
+
+  .cardContainer{
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 873px){
+  .containerUpdate{
+    padding: 0;
+  }
+}

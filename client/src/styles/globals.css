@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap');
+
+/* 
+  font-family: 'Manrope', sans-serif;
+*/
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.3;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  color: var(--color-text)
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root{
+  --color-border: #485470;
+  --color-text: #485470;
+  --btn-color: #56E39F;
+  --btn-hover: #80f1bb;
+  --title-deco: #ff61613d;
+  --purple: #4c67f4;
+  --dark-gray: #d4dced;
+  --gray: #99A7C7;
+  --gray-dark-hover: #b3bdd4;
+  --gray-hover: #f1f4fb;
+  --btn-selected: #99A7c7;
+  --danger: #ff6d6d;
+  --danger-hover: #ff6d6d;
+}

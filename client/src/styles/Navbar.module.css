@@ -1,0 +1,114 @@
+.navBar{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  border-bottom: 1px solid var(--gray);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.navRight{
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.grow{
+  width: 1000px;
+}
+
+.logo img{
+  width: 180px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.navBar li{
+  position: relative;
+}
+
+.navbarList{
+  padding-left: 0;
+  display: flex;
+  gap: 2rem;
+  margin-block: 0;
+  align-items: center;
+}
+
+.navbarIcon{
+  font-size: 1.8rem;
+}
+
+.navbarText{
+  display: block;
+  position: absolute;
+  bottom: -25px;
+  width: 70px;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: black;
+  color: white;
+  padding-block: 0.2rem;
+  border-radius: 50px;
+  visibility: hidden;
+  text-align: center;
+}
+
+.navbarBtn:hover .navbarText{
+  visibility: visible;
+}
+
+.navbarBtn{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  position: relative;
+  padding: 0.5rem;
+}
+
+.navbarBtn:hover{
+  background-color: var(--gray-hover);
+  border-radius: 50%;
+}
+
+.navbarQuantity{
+  position: absolute;
+  padding: 0.1rem 0.4rem;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  top: 0;
+  right: -5px;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 650px){
+  .navBar{
+    display: block;
+  }
+  .navbarList{
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .navBar{
+    padding: 0 3rem;
+  }
+
+  .navRight{
+    display: block;
+  }
+
+  .navbarList{
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+}

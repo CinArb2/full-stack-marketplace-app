@@ -1,0 +1,166 @@
+.productContainer{
+  padding: 2rem;
+  line-height: 1.5;
+   min-width: 440px;
+}
+.title{
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.description{
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  margin-bottom: 2rem;
+}
+.containerOtros{
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.shopInfoHeader{
+  display: flex;
+  align-items: center;
+}
+
+.shopLogoWrapper{
+  border: 1px solid var(--color-border);
+  width: 35px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.containerPrice, .containerCounter{
+  width: 50%;
+}
+
+.tag{
+  color: rgb(136, 134, 134);
+  margin-bottom: 1rem;
+}
+
+.price{
+  font-size: 1.4rem;
+}
+
+.btnLeft, .btnRight, .counter{
+  background-color: white;
+  border: 1px solid gray;
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.btnLeft:hover,
+.btnRight:hover{
+  background-color: var(--gray-hover);
+}
+
+.btnLeft, .btnRight{
+  cursor: pointer;
+  width: 50px;
+  padding-block: 0;
+}
+
+.btnLeft{
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.btnRight{
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.counter{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}
+
+.btnCart{
+  background-color: var(--btn-color);
+  border: none;
+  width: 100%;
+  font-size: 2rem;
+  margin-block: 1rem;
+  cursor: pointer;
+  max-width: 400px;
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+}
+
+.shopInfo{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0 2rem;
+  max-width: 350px;
+}
+
+.shopName{
+  font-weight: 600;
+  display: inline;
+  padding-left: 0.5rem;
+}
+
+.btnViewShop{
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.7rem;
+  letter-spacing: 1.2px;
+  text-align: left;
+  color: inherit;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: auto;
+}
+
+.btnViewShop:hover{
+  background-color: var(--gray-hover);
+}
+
+.btnCart:hover{
+  background-color: var(--btn-hover);
+}
+
+.messageError{
+  margin-block: 1rem;
+  background-color: #ffd9d9;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-left: 9px solid red;
+}
+
+
+@media screen and (max-width: 550px){
+  .productContainer{
+    text-align: center;
+    min-width: unset;
+  }
+
+  .containerOtros{
+    display: block;
+    margin: 1rem auto;
+  }
+
+  .containerPrice, .containerCounter{
+    width: 100%;
+    margin-block: 1rem;
+  }
+
+  .shopInfo{
+    display: block;
+    margin: 1rem auto 2rem;
+  }
+
+  .shopInfoHeader{
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+}
