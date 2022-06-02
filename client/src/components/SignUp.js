@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/SignUp.module.css'
-import axios from 'axios'
 import { useDispatch, useSelector} from 'react-redux'
-import { setIsLoading } from '../redux/loader/loaderActionCreators'
 import { BsFillImageFill } from 'react-icons/bs'
 import { signUp } from '../redux/user/userActionCreators'
 import { openModalMsg, setError } from '../redux/error/errorActionCreators'
@@ -14,7 +12,6 @@ const SignUp = ({ closeModal, setSignUp, setIsLogin }) => {
     password: '',
   })
   const [selectedFile, setSelectedFile] = useState('');
-  const [signUpError, setSignUpError] = useState('')
   const dispatch = useDispatch()
   const errorMessage = useSelector(state => state.error.errorMsg)
   
@@ -116,7 +113,6 @@ const SignUp = ({ closeModal, setSignUp, setIsLogin }) => {
         <button
           className={styles.signUpButton}
           >Sign Up</button>
-        {signUpError && <p className={styles.messageError}> { signUpError} </p>}
         <p>Already have an account?
           <span
             className={styles.btnRedirect}

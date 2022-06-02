@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/ShopForm.module.css'
-import axios from 'axios'
 import { useDispatch, useSelector} from 'react-redux'
-import { setIsLoading } from '../redux/loader/loaderActionCreators'
 import { BsFillImageFill } from 'react-icons/bs'
 import { createShop, getShopUser } from '../redux/shop/shopActionCreators'
 import { openModalMsg, setError } from '../redux/error/errorActionCreators'
@@ -16,7 +14,7 @@ const ShopForm = () => {
     logoImg: '',
     coverImg: ''
   });
-   const shopUser = useSelector(state => state.shop.shopUser)
+
   const errorMessage = useSelector(state => state.error.errorMsg)
   
   const dispatch = useDispatch()

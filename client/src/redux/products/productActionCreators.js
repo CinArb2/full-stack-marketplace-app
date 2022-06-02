@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { productActions } from './productActionTypes'
 import { setIsLoading } from '../loader/loaderActionCreators'
-import { getConfig, getConfigUpdate } from '../../helper/getConfig'
-import { getShopProducts, getShopUser } from '../shop/shopActionCreators'
+import { getConfig } from '../../helper/getConfig'
+import {  getShopUser } from '../shop/shopActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 
 const API_URL = 'http://localhost:5000/api/v1'

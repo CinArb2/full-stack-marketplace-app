@@ -2,7 +2,6 @@ import { userActions } from './userActiontypes'
 import axios from 'axios'
 import { getConfig, getConfigFormData, getConfigSignUp } from '../../helper/getConfig'
 import { setIsLoading } from '../loader/loaderActionCreators'
-import { getProductsCart } from '../cart/cartActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 import { getShopUser } from '../shop/shopActionCreators'
 

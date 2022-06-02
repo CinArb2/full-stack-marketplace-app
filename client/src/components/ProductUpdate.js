@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/ProductUpdate.module.css'
 import { BsFillImageFill } from 'react-icons/bs'
 import { deleteProductById, fetchCategories, updateProduct } from '../redux/products/productActionCreators'
-import setIsLoading from '../redux/loader/loaderActionCreators'
-import axios from 'axios'
-import { getShopProducts, getShopUser } from '../redux/shop/shopActionCreators'
+import { getShopUser } from '../redux/shop/shopActionCreators'
 import TableProduct from './TableProduct'
 
 const ProductUpdate = () => {

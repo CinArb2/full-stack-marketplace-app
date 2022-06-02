@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { deleteProductCart, getProductsCart, purchaseCart } from '../redux/cart/cartActionCreators'
+import { deleteProductCart, purchaseCart } from '../redux/cart/cartActionCreators'
 import styles from '../styles/Cart.module.css'
 import { BsTrash } from 'react-icons/bs';
 

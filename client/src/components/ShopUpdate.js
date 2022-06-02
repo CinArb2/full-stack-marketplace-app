@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/ShopUpdate.module.css'
-import axios from 'axios'
 import { useDispatch, useSelector} from 'react-redux'
-import { setIsLoading } from '../redux/loader/loaderActionCreators'
 import { BsFillImageFill } from 'react-icons/bs'
 import { deleteShop, getShopUser, updateShop } from '../redux/shop/shopActionCreators'
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'

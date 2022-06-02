@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { cleanInfoCart } from '../redux/cart/cartActionCreators'
 import { cleanShop } from '../redux/shop/shopActionCreators'
-import { cleanUserInfo, cleanUserOrders, getUserInfo, updateUserInfo } from '../redux/user/userActionCreators'
+import { cleanUserInfo, cleanUserOrders, getUserInfo } from '../redux/user/userActionCreators'
 import styles from '../styles/Logout.module.css'
-import { BsFillImageFill ,BsShop, BsClockHistory } from 'react-icons/bs'
-import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
+import {  BsShop, BsClockHistory } from 'react-icons/bs'
+import { AiOutlineEdit } from 'react-icons/ai'
 import { MdLogout } from 'react-icons/md'
 
 
