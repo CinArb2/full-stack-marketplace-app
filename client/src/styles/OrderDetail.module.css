@@ -35,3 +35,21 @@
 .orderColumn li{
   margin-block: 0.5rem;
 }
+
+.orderPriceQty{
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+.orderQuantity{
+  text-align: center;
+}
+
+@media screen and (max-width: 875px){
+  .orderBody{
+    display: block;
+  }
+  .orderColumn{
+    margin-block: 1rem;
+  }
+}

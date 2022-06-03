@@ -14,25 +14,27 @@ const OrderDetail = ({orderInfo}) => {
           <span className={styles.orderTitle}>Total </span>
           <span>$ {orderInfo?.totalPrice}</span>
         </div>
-        <div className={styles.orderColumn}>
-          <span className={styles.orderTitle}>Products</span>
-          <ul>
-            {
-              orderInfo?.cart.productInCarts.map(prod => (
-                <li key={prod.id}>{prod?.product.title}</li>
-              ))
-            }
-          </ul>
-        </div>
-        <div className={styles.orderColumn}>
-          <span className={styles.orderTitle}>Quantity</span>
-          <ul>
-            {
-              orderInfo?.cart.productInCarts.map(prod => (
-                <li key={prod?.id}>{prod?.quantity}</li>
-              ))
-            }
-          </ul>
+        <div className={styles.orderPriceQty}>
+          <div className={styles.orderColumn}>
+            <span className={styles.orderTitle}>Products</span>
+            <ul>
+              {
+                orderInfo?.cart.productInCarts.map(prod => (
+                  <li key={prod.id}>{prod?.product.title}</li>
+                ))
+              }
+            </ul>
+          </div>
+          <div className={styles.orderColumn}>
+            <span className={styles.orderTitle}>Qty</span>
+            <ul className={styles.orderQuantity}>
+              {
+                orderInfo?.cart.productInCarts.map(prod => (
+                  <li key={prod?.id}>{prod?.quantity}</li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
         <div className={styles.orderColumn}>
           <span className={styles.orderTitle}>Status</span>

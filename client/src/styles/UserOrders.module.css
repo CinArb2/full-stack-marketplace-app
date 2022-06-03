@@ -19,3 +19,10 @@
   top: 40%;
   z-index: -1;
 }
+
+
+@media screen and (max-width: 875px){
+  .orderContainer{
+    padding: 1.5rem;
+  }
+}

@@ -73,3 +73,24 @@
 .linkManager.active{
   background-color: var(--gray-hover);
 }
+
+
+@media screen and (max-width: 1250px){
+  .wrapperUserManager{
+    display: block;
+  }
+
+  .shopManagerBtns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-block: 1rem;
+  }
+  .linkManager{
+    padding-inline: 1rem;
+  }
+  .containerViews{
+    padding-inline: 0;
+  }
+}
