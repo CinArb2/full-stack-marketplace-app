@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ShopForm from '../components/ShopForm'
-import { getShopById, getShopProducts, getShopUser } from '../redux/shop/shopActionCreators'
+import { cleanShopSelected, getShopById, getShopProducts, getShopUser } from '../redux/shop/shopActionCreators'
 import ShopDetails from '../components/ShopDetails'
 import ShopProductList from '../components/ShopProductList'
 import { useLocation, useParams } from 'react-router'
@@ -27,6 +27,12 @@ const Shop = () => {
       dispatch(getShopUser())
     }
   }, [dispatch, id, pathname, shopUser.id, searchParams])
+
+  useEffect(() => {
+    return () => {
+      dispatch(cleanShopSelected())
+    }
+  }, [dispatch])
 
   return (
     <div>
