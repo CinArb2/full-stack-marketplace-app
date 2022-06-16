@@ -47,7 +47,7 @@ const Navbar = () => {
    totalQuantityCart = cart.productsCart?.reduce((prev, curr)=>prev + curr.quantity, 0)
 
   const getModalChildren = () => {
-    console.log(modal)
+    
     switch (true) {
       case modal.isLogin:
         return <Login/>
