@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import { fetchProductQuery } from '../redux/products/productActionCreators';
 import styles from '../styles/SearchBar.module.css'
 
-const SearchBar = ({grow, setGrow}) => {
+const SearchBar = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState('')
   const navigate = useNavigate()

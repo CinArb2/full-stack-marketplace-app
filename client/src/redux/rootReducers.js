@@ -5,6 +5,7 @@ import loaderReducer from './loader/loaderReducer'
 import userReducer from './user/userReducer'
 import shopReducer from './shop/shopReducer'
 import errorReducer from './error/errorReducer'
+import { modalReducer } from './modal/modalReducers';
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   loader: loaderReducer,
   users: userReducer,
   shop: shopReducer,
-  error: errorReducer
+  error: errorReducer,
+  modal: modalReducer
 })
 
 export default rootReducer;

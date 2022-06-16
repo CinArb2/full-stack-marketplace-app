@@ -4,6 +4,7 @@ import { getConfig, getConfigFormData, getConfigSignUp } from '../../helper/getC
 import { setIsLoading } from '../loader/loaderActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 import { getShopUser } from '../shop/shopActionCreators'
+import { setIsLogin, setLogged } from '../modal/modalActionCreators'
 
 const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
 
@@ -13,10 +14,10 @@ export const loginUser = (formData) => {
     dispatch(setIsLoading(true))
     return axios.post(`${API_URL}/users/login`, formData)
       .then((res) => localStorage.setItem('token', res.data.token))
-      // .then(() => dispatch(setError('success')))
-      // .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getUserInfo()))
       .then(() => dispatch(getShopUser()))
+      .then(() => dispatch(setIsLogin(false)))
+      .then(() => dispatch(setLogged(true)))
       .catch(error => {
         if (error.response.status === 400) {
           dispatch(setError(error.response.data.message))

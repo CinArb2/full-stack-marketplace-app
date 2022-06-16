@@ -3,12 +3,8 @@ import { BiStore } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router';
 import { addToCart, updateCart } from '../redux/cart/cartActionCreators'
+import { setCart, setIsOpen } from '../redux/modal/modalActionCreators';
 import styles from '../styles/ProductInfo.module.css'
-import Cart from './Cart';
-import Login from './Login';
-import Logout from './Logout';
-import Modal from './Modal';
-import SignUp from './SignUp';
 
 function ProductInfo() {
   const [counter, setCounter] = useState(1)
@@ -16,11 +12,6 @@ function ProductInfo() {
   const selectedProduct = useSelector(state => state.products.selectedProduct)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  //modal actions
-  const [isOpen, setIsOpen] = useState(false)
-  const [isLogin, setIsLogin] = useState(false)
-  const [signUp, setSignUp] = useState(false)
 
   useEffect(() => {
     setCounter(1)
@@ -53,15 +44,19 @@ function ProductInfo() {
       let productAlreadyIncart = cart.productsCart.length > 0 ? cart.productsCart?.find(el => el.productId === selectedProduct.id) : null
 
       if (productAlreadyIncart) {
+        
         bodyRequest.quantity = counter + productAlreadyIncart.quantity
         dispatch(updateCart(bodyRequest))
+
       } else {
+        
         bodyRequest.quantity = counter
         dispatch(addToCart(bodyRequest))
       }
       setCounter(1)
     }
-    setIsOpen(true)
+    dispatch(setIsOpen(true))
+    dispatch(setCart(true))
   }
 
 
@@ -106,27 +101,6 @@ function ProductInfo() {
         Add to cart
       </button>
       </div>
-      <Modal
-        closeModal={setIsOpen}
-        setSignUp={setSignUp}
-        setIsLogin={setIsLogin}
-        isOpen={isOpen}>
-        {isLogin ?
-          localStorage.getItem('token') ?
-            <Logout closeModal={setIsOpen}/> :
-            <Login
-              closeModal={setIsOpen}
-              setSignUp={setSignUp}
-              setIsLogin={setIsLogin}/>
-          : signUp ?
-            <SignUp
-              closeModal={setIsOpen}
-              setSignUp={setSignUp}
-              setIsLogin={setIsLogin}/> 
-            :
-            <Cart setIsLogin={setIsLogin}
-              setIsOpen={setIsOpen}/>}
-      </Modal>
     </>
   )
 }

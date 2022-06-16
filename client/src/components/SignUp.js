@@ -4,8 +4,9 @@ import { useDispatch, useSelector} from 'react-redux'
 import { BsFillImageFill } from 'react-icons/bs'
 import { signUp } from '../redux/user/userActionCreators'
 import { openModalMsg, setError } from '../redux/error/errorActionCreators'
+import { setIsLogin, setSignup } from '../redux/modal/modalActionCreators'
 
-const SignUp = ({ closeModal, setSignUp, setIsLogin }) => {
+const SignUp = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -15,7 +16,6 @@ const SignUp = ({ closeModal, setSignUp, setIsLogin }) => {
   const dispatch = useDispatch()
   const errorMessage = useSelector(state => state.error.errorMsg)
   
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -58,10 +58,16 @@ const SignUp = ({ closeModal, setSignUp, setIsLogin }) => {
         password: '',
       })
       setIsLogin(true)
-      setSignUp(false)
+      setSignup(false)
     }
-  }, [errorMessage, setIsLogin, setSignUp])
+  }, [errorMessage])
   
+
+  const handleLogin = () => {
+    dispatch(setSignup(false))
+    dispatch(setIsLogin(true))
+  }
+
   return (
     <div className={styles.signUpContainer}>
       <h1 className={styles.signUpTitle}>Sign Up</h1>
@@ -116,10 +122,7 @@ const SignUp = ({ closeModal, setSignUp, setIsLogin }) => {
         <p>Already have an account?
           <span
             className={styles.btnRedirect}
-            onClick={() => {
-              setSignUp(false);
-              setIsLogin(true)
-            }}>
+            onClick={handleLogin}>
             Login
           </span>
         </p>

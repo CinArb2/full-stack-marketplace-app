@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom' 
 import { BsPersonCircle, BsCart2 } from 'react-icons/bs';
 import { BiStore } from 'react-icons/bi';
@@ -6,30 +6,35 @@ import style from '../styles/Navbar.module.css'
 import Modal from './Modal';
 import Login from './Login';
 import Cart from './Cart';
-import { useSelector } from 'react-redux';
-import Logout from './Logout';
+import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './SignUp';
 import SearchBar from './SearchBar';
+import { setCart, setIsLogin, setIsOpen, setLogged } from '../redux/modal/modalActionCreators';
+import Logout from './Logout';
 
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isLogin, setIsLogin] = useState(false)
-  const [signUp, setSignUp] = useState(false)
   const token = useSelector(state => state.token)
   const cart = useSelector(state => state.cart)
-  const [grow, setGrow] = useState(true)
+  const modal = useSelector(state => state.modal)
+  const dispatch = useDispatch()
+  
   let totalQuantityCart = 0
 
   const handleLoginBtn = () => {
-    setIsOpen(true)
-    setIsLogin(true)
+    dispatch(setIsOpen(true))
+
+    if (localStorage.getItem('token')) {
+      dispatch(setLogged(true))
+      return
+    }
+    dispatch(setIsLogin(true))
   }
 
   const handleCartBtn = () => {
-    
-    setIsOpen(true)
-    setIsLogin(false)
+    dispatch(setIsOpen(true))
+    dispatch(setCart(true))
+    dispatch(setIsLogin(false))
   }
 
   useEffect(() => {
@@ -41,24 +46,37 @@ const Navbar = () => {
   if(cart.productsCart.length > 0)
    totalQuantityCart = cart.productsCart?.reduce((prev, curr)=>prev + curr.quantity, 0)
 
+  const getModalChildren = () => {
+    console.log(modal)
+    switch (true) {
+      case modal.isLogin:
+        return <Login/>
+      case modal.isSignup:
+        return <SignUp/>
+      case modal.isCart:
+        return <Cart />
+      case modal.isLogged:
+        return <Logout/>
+      default:
+        return;
+    }
+  }
+  
   return (
     <>
       <nav className={style.navBar}>
         <NavLink to='/' className={style.logo}>
           <img src="./images/logo.png" alt="" />
         </NavLink>
-        <div
-          className={style.navRight}
-        >
-          <SearchBar
-            grow={grow}
-            setGrow={setGrow}
-          />
+        <div className={style.navRight}>
+          <SearchBar/>
           <ul className={style.navbarList}>
             <li>
               <button className={style.navbarBtn} onClick={handleLoginBtn}>
                 <BsPersonCircle className={style.navbarIcon} />
-                <span className={style.navbarText}>sign In</span>
+                <span className={style.navbarText}>
+                  {localStorage.getItem('token') ? 'Profile': 'Sign In'}
+                </span>
               </button>
             </li>
             {
@@ -79,26 +97,8 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-      <Modal
-        closeModal={setIsOpen}
-        setSignUp={setSignUp}
-        setIsLogin={setIsLogin}
-        isOpen={isOpen}>
-        {isLogin ?
-          localStorage.getItem('token') ?
-            <Logout closeModal={setIsOpen}/> :
-            <Login
-              closeModal={setIsOpen}
-              setSignUp={setSignUp}
-              setIsLogin={setIsLogin}/>
-          : signUp ?
-            <SignUp
-              closeModal={setIsOpen}
-              setSignUp={setSignUp}
-              setIsLogin={setIsLogin}/> 
-            :
-            <Cart setIsLogin={setIsLogin}
-              setIsOpen={setIsOpen}/>}
+      <Modal>
+        {getModalChildren()}
       </Modal>
     </>
   )

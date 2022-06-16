@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteProductCart, purchaseCart } from '../redux/cart/cartActionCreators'
 import styles from '../styles/Cart.module.css'
 import { BsTrash } from 'react-icons/bs';
+import { setCart, setIsLogin } from '../redux/modal/modalActionCreators';
 
-const Cart = ({setIsLogin, setIsOpen}) => {
+const Cart = () => {
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cart)
   let sum = 0;
@@ -23,6 +24,10 @@ const Cart = ({setIsLogin, setIsOpen}) => {
     sum = cart.productsCart?.reduce((prev, curr) => prev + curr.product.price * curr.quantity, 0).toFixed(2)
   }
 
+  const handleLogin = () => {
+    dispatch(setIsLogin(true))
+    dispatch(setCart(false))
+  }
 
   return (
     <div className={styles.containerCart}>
@@ -67,7 +72,7 @@ const Cart = ({setIsLogin, setIsOpen}) => {
         <div className={styles.cartWrapperLogin}>
           <img src='./images/cartIllus.png' alt="" />
           <p>In order to add producst to the cart please Login</p>
-          <button onClick={()=> setIsLogin(true)} className={styles.loginButton}>Login</button>
+          <button onClick={handleLogin} className={styles.loginButton}>Login</button>
         </div>
       }
     </div>

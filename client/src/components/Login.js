@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import styles from '../styles/Login.module.css'
 import { useDispatch} from 'react-redux'
 import { loginUser } from '../redux/user/userActionCreators'
+import { setIsLogin, setSignup } from '../redux/modal/modalActionCreators'
 
-const Login = ({setSignUp, setIsLogin}) => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
   const dispatch = useDispatch()
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -21,10 +22,16 @@ const Login = ({setSignUp, setIsLogin}) => {
     })
   }
 
+  const handleSignup = () => {
+    dispatch(setIsLogin(false))
+    dispatch(setSignup(true))
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(loginUser(formData))
   }
+
   
   return (
     <div className={styles.loginContainer}>
@@ -51,10 +58,7 @@ const Login = ({setSignUp, setIsLogin}) => {
         <p>Don't have an account?
           <span
             className={styles.btnRedirect}
-            onClick={() => {
-              setSignUp(true);
-              setIsLogin(false)
-            }}>
+            onClick={handleSignup}>
             Sign up
           </span>
         </p>

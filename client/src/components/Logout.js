@@ -8,9 +8,10 @@ import styles from '../styles/Logout.module.css'
 import {  BsShop, BsClockHistory } from 'react-icons/bs'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { MdLogout } from 'react-icons/md'
+import { setIsOpen, setLogged } from '../redux/modal/modalActionCreators'
 
 
-const Logout = ({ closeModal }) => {
+const Logout = () => {
   const userInfo = useSelector(state => state.users.userInfo)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,29 +19,30 @@ const Logout = ({ closeModal }) => {
 
   const handleLogOut = () => {
     localStorage.setItem('token', '')
-    closeModal(false)
+    dispatch(setIsOpen(false))
     dispatch(cleanInfoCart())
     dispatch(cleanShop())
     dispatch(cleanUserInfo())
     dispatch(cleanUserOrders())
+    dispatch(setLogged(false))
     navigate('/')
   }
 
   const handleMyShopBtn = () => {
     navigate('/shop?user=me')
-    closeModal(false)
+    dispatch(setIsOpen(false))
     window.scrollTo(0,0)
   }
 
   const handleEditBtn = () => {
     navigate('/userManager/settings')
-    closeModal(false)
+    dispatch(setIsOpen(false))
     window.scrollTo(0,0)
   }
 
   const handleOrderBtn = () => {
     navigate('/userManager/orders')
-    closeModal(false)
+    dispatch(setIsOpen(false))
     window.scrollTo(0,0)
   }
 

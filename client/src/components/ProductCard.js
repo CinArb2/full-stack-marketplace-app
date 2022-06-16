@@ -4,8 +4,9 @@ import { CgArrowLongRight } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, updateCart } from '../redux/cart/cartActionCreators';
+import { setCart, setIsOpen } from '../redux/modal/modalActionCreators';
 
-const ProductCard = ({productInfo, path, setIsOpen}) => {
+const ProductCard = ({productInfo, path}) => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   
@@ -25,16 +26,21 @@ const ProductCard = ({productInfo, path, setIsOpen}) => {
         productObj.quantity = findProduct.quantity + 1
         
         dispatch(updateCart(productObj))
-        setIsOpen(true)
+        dispatch(setIsOpen(true))
+        dispatch(setCart(true))
         return 
       }
 
       productObj.quantity = 1
 
       dispatch(addToCart(productObj))
+      dispatch(setIsOpen(true))
+      dispatch(setCart(true))
+      return
     }
     
-    setIsOpen(true)
+    dispatch(setIsOpen(true))
+    dispatch(setCart(true))
   }
 
   const handleScroll = () => {

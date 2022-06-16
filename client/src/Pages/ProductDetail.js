@@ -66,31 +66,9 @@ const ProductDetail = () => {
             <ProductCard
               key={product.id}
               productInfo={product}
-              setIsOpen={setIsOpen}
               path={'/product/'} />
             )) }
         </div>
-        <Modal
-        closeModal={setIsOpen}
-        setSignUp={setSignUp}
-        setIsLogin={setIsLogin}
-        isOpen={isOpen}>
-        {isLogin ?
-          localStorage.getItem('token') ?
-            <Logout closeModal={setIsOpen}/> :
-            <Login
-              closeModal={setIsOpen}
-              setSignUp={setSignUp}
-              setIsLogin={setIsLogin}/>
-          : signUp ?
-            <SignUp
-              closeModal={setIsOpen}
-              setSignUp={setSignUp}
-              setIsLogin={setIsLogin}/> 
-            :
-            <Cart setIsLogin={setIsLogin}
-              setIsOpen={setIsOpen}/>}
-          </Modal>
       </div>
     </div>
   )
