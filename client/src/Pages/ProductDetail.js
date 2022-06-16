@@ -8,11 +8,6 @@ import ProductInfo from '../components/ProductInfo'
 import ProductCard from '../components/ProductCard'
 import { Link } from 'react-router-dom'
 import { MdOutlineDoubleArrow } from 'react-icons/md';
-import Modal from '../components/Modal'
-import Logout from '../components/Logout'
-import Login from '../components/Login'
-import SignUp from '../components/SignUp'
-import Cart from '../components/Cart'
 
 
 const ProductDetail = () => {
@@ -21,9 +16,6 @@ const ProductDetail = () => {
   const categories = useSelector(state => state.products.categories)
   const { id } = useParams()
   const dispatch = useDispatch()
-  const [isOpen, setIsOpen] = useState(false)
-  const [isLogin, setIsLogin] = useState(false)
-  const [signUp, setSignUp] = useState(false)
   
   useEffect(() => {
     dispatch(fetchSelectedProduct(id))
