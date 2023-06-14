@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install:client": "pnpm install --prefix client",
-    "install:server": "pnpm install --prefix server",
-    "install:app": "npm-run-all --parallel install:server install:client",
-    "start:client": "pnpm start --prefix client",
-    "start:server": "pnpm run start:dev --prefix server",
-    "start:app": "npm-run-all --parallel start:server start:client",
-    "buil:client": "pnpm build --prefix client"
+    "install:client": "pnpm --filter ./client install",
+    "install:server": "pnpm --filter ./server install",
+    "clean:app": "pnpm run -r clean && rimraf node_modules",
+    "install:app": "pnpm install && pnpm install:client && pnpm install:server",
+    "start:client": "pnpm --filter ./client start",
+    "start:server": "pnpm --filter ./server start:dev",
+    "buil:client": "pnpm --filter ./client build",
+    "start:app": "concurrently \"pnpm:start:server\" \"pnpm:start:client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "concurrently": "^8.2.0",
+    "rimraf": "^5.0.1"
   }
 }
