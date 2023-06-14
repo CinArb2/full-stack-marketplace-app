@@ -4,11 +4,9 @@ import { getConfig } from '../../helper/getConfig'
 import { setIsLoading } from '../loader/loaderActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 
-const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
-
 export const getProductsCart = ( ) => {
   return (dispatch) => {
-    return axios.get(`${API_URL}/cart`, getConfig())
+    return axios.get(`${process.env.REACT_APP_API_URL}/cart`, getConfig())
       .then((response) => dispatch(setCart(response.data.productInCArt)))
       .catch(error => {
         if (error.response.status === 404) {
@@ -21,7 +19,7 @@ export const getProductsCart = ( ) => {
 export const addToCart = (product) => {
   return  (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.post(`${API_URL}/cart/add-product`, product, getConfig())
+    return axios.post(`${process.env.REACT_APP_API_URL}/cart/add-product`, product, getConfig())
       .then(() => dispatch(getProductsCart()))
       .catch(error => {
         if (error.response.status === 404) {
@@ -36,7 +34,7 @@ export const addToCart = (product) => {
 export const deleteProductCart = (id) => {
   return  (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.delete(`${API_URL}/cart/${id}`, getConfig())
+    return axios.delete(`${process.env.REACT_APP_API_URL}/cart/${id}`, getConfig())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getProductsCart()))
@@ -46,7 +44,7 @@ export const deleteProductCart = (id) => {
 
 export const emptyCart = () => {
   return  (dispatch) => {
-    return axios.delete(`${API_URL}/cart/`, getConfig())
+    return axios.delete(`${process.env.REACT_APP_API_URL}/cart/`, getConfig())
       .then(() => dispatch(cleanInfoCart()))
       .catch((error) =>  console.log(error.response))
   }
@@ -55,7 +53,7 @@ export const emptyCart = () => {
 export const updateCart = (product) => {
   return  (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.patch(`${API_URL}/cart/update-cart`, product, getConfig())
+    return axios.patch(`${process.env.REACT_APP_API_URL}/cart/update-cart`, product, getConfig())
       .then(() => dispatch(getProductsCart()))
       .catch(error => {
         if (error.response.status === 404) {
@@ -70,7 +68,7 @@ export const updateCart = (product) => {
 export const purchaseCart = () => {
   return  (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.post(`${API_URL}/cart/purchase`, {}, getConfig())
+    return axios.post(`${process.env.REACT_APP_API_URL}/cart/purchase`, {}, getConfig())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(cleanInfoCart()))

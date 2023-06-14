@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Navbar from "./components/Navbar";
 import ProductDetail from "./Pages/ProductDetail";
@@ -23,19 +23,18 @@ function App() {
 
   return (
     <div className="App">
-      <HashRouter>
         {isLoading && <Loader />}
-        
+
         <Navbar />
         {modalMsg && <MessageModal/>}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/shop/:id" element={<Shop />} />
-          
+
           {/* protected routes */}
           <Route element={<ProtectedRoutes />}>
-            
+
             {/* User routes */}
             <Route path="/userManager/*" element={<UserManager />} >
               <Route path="orders" element={<UserOrders />} />
@@ -54,7 +53,6 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </HashRouter>
     </div>
   );
 }

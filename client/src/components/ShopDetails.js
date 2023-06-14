@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from '../styles/ShopDetails.module.css'
 
 import { AiOutlineSetting } from 'react-icons/ai'
@@ -14,7 +14,7 @@ const ShopDetails = () => {
   const handleManageBtn = () => {
     navigate('/shop/manager/overview')
   }
-  
+
   return (
     <div className={styles.containerShop}>
       <div className={styles.containerCover}>

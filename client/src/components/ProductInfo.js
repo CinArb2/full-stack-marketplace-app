@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BiStore } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { addToCart, updateCart } from '../redux/cart/cartActionCreators'
 import { setCart, setIsOpen } from '../redux/modal/modalActionCreators';
 import styles from '../styles/ProductInfo.module.css'
@@ -24,7 +24,7 @@ function ProductInfo() {
   const subtractCounter = () => {
     if (counter > 1) {
       setCounter(prev => prev - 1)
-    } 
+    }
   }
 
   const handleViewShop = () => {
@@ -34,7 +34,7 @@ function ProductInfo() {
 
   const handleCartBtn = () => {
     if (localStorage.getItem('token')) {
-    
+
 
       let bodyRequest = {
         productId: selectedProduct.id,
@@ -44,12 +44,12 @@ function ProductInfo() {
       let productAlreadyIncart = cart.productsCart.length > 0 ? cart.productsCart?.find(el => el.productId === selectedProduct.id) : null
 
       if (productAlreadyIncart) {
-        
+
         bodyRequest.quantity = counter + productAlreadyIncart.quantity
         dispatch(updateCart(bodyRequest))
 
       } else {
-        
+
         bodyRequest.quantity = counter
         dispatch(addToCart(bodyRequest))
       }

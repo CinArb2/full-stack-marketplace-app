@@ -42,7 +42,7 @@ router.use('/', protectToken)
 
 router.post('/',
   upload.array('productImgs', 3),
-  userHasShop, 
+  userHasShop,
   productValidations,
   checkValidations,
   createProduct)
