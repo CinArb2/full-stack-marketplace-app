@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { cleanInfoCart } from '../redux/cart/cartActionCreators'
 import { cleanShop } from '../redux/shop/shopActionCreators'
 import { cleanUserInfo, cleanUserOrders, getUserInfo } from '../redux/user/userActionCreators'
@@ -51,13 +51,13 @@ const Logout = () => {
       dispatch(getUserInfo())
     }
   }, [dispatch, userInfo.id])
-  
+
   return (
     <div className={styles.logoutContainer}>
       <div className={styles.imgContainer}>
         <img src={userInfo.avatarImg} alt="" />
       </div>
-      
+
       <h1 className={styles.logoutTitle}>Welcome {userInfo.username}!</h1>
       <p>{userInfo.email}</p>
 
@@ -67,13 +67,13 @@ const Logout = () => {
         >
           <BsShop className={styles.iconBtn}/>
           My shop</button>
-        
+
         <button className={`${styles.btn} ${styles.btnSetting}`}
           onClick={handleEditBtn}
         >
           <AiOutlineEdit className={styles.iconBtn}/>
           Edit profile</button>
-        
+
         <button className={`${styles.btn} ${styles.btnSetting}`}
           onClick={handleOrderBtn}
         >
@@ -85,7 +85,7 @@ const Logout = () => {
           <MdLogout className={styles.iconBtn}/>
           Logout</button>
       </div>
-      
+
     </div>
   )
 }

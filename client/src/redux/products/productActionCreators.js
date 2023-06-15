@@ -5,12 +5,10 @@ import { getConfig } from '../../helper/getConfig'
 import {  getShopUser } from '../shop/shopActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 
-const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
-
 export const fetchProducts = () => {
   return async (dispatch) => {
     dispatch(setIsLoading(true))
-    const response = await axios.get(`${API_URL}/products`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/products`)
     dispatch(setProductList(response.data.products))
     dispatch(setIsLoading(false))
   }
@@ -19,16 +17,16 @@ export const fetchProducts = () => {
 export const fetchSelectedProduct = (id) => {
   return async (dispatch) => {
     dispatch(setIsLoading(true))
-    const response = await axios.get(`${API_URL}/products/${id}`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/products/${id}`)
     dispatch(setSelectedProduct(response.data.product))
     dispatch(setIsLoading(false))
   }
 }
 
 export const fetchRelatedProducts = (id) => {
-  
+
   return async (dispatch) => {
-    const response = await axios.get(`${API_URL}/products?category=${id}`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/products?category=${id}`)
     dispatch(getRelatedProducts(response.data.products))
   }
 }
@@ -36,7 +34,7 @@ export const fetchRelatedProducts = (id) => {
 export const fetchSelectedCategory = (id) => {
   return async (dispatch) => {
     dispatch(setIsLoading(true))
-    const response = await axios.get(`${API_URL}/products?category=${id}`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/products?category=${id}`)
     dispatch(setProductList(response.data.products))
     dispatch(setIsLoading(false))
   }
@@ -45,7 +43,7 @@ export const fetchSelectedCategory = (id) => {
 export const fetchProductQuery = (data) => {
   return async (dispatch) => {
     dispatch(setIsLoading(true))
-    const response = await axios.get(`${API_URL}/products?search=${data}`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/products?search=${data}`)
     dispatch(setProductList(response.data.products))
     dispatch(setIsLoading(false))
   }
@@ -55,7 +53,7 @@ export const fetchProductQuery = (data) => {
 export const deleteProductById = (id) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.delete(`${API_URL}/products/${id}`, getConfig())
+    return axios.delete(`${process.env.REACT_APP_API_URL}/products/${id}`, getConfig())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getShopUser()))
@@ -72,7 +70,7 @@ export const deleteProductById = (id) => {
 export const updateProduct = (id, formdata) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.patch(`${API_URL}/products/${id}`, formdata, getConfig())
+    return axios.patch(`${process.env.REACT_APP_API_URL}/products/${id}`, formdata, getConfig())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getShopUser()))
@@ -89,7 +87,7 @@ export const updateProduct = (id, formdata) => {
 export const createProduct = ( formdata) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.post(`${API_URL}/products/`, formdata, getConfig())
+    return axios.post(`${process.env.REACT_APP_API_URL}/products/`, formdata, getConfig())
       .then(() => dispatch(getShopUser()))
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
@@ -105,7 +103,7 @@ export const createProduct = ( formdata) => {
 
 export const fetchCategories = () => {
   return async (dispatch) => {
-    const response = await axios.get(`${API_URL}/products/categories`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/products/categories`)
     dispatch(setCategories(response.data.categories))
   }
 }

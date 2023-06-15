@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BsSearch } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { fetchProductQuery } from '../redux/products/productActionCreators';
 import styles from '../styles/SearchBar.module.css'
 
@@ -9,7 +9,7 @@ const SearchBar = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState('')
   const navigate = useNavigate()
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     navigate('/')

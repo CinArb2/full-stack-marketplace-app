@@ -4,7 +4,7 @@ import ShopForm from '../components/ShopForm'
 import { cleanShopSelected, getShopById, getShopProducts, getShopUser } from '../redux/shop/shopActionCreators'
 import ShopDetails from '../components/ShopDetails'
 import ShopProductList from '../components/ShopProductList'
-import { useLocation, useParams } from 'react-router'
+import { useLocation, useParams } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 
 

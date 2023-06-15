@@ -4,14 +4,10 @@ import { getConfig, getConfigFormData } from '../../helper/getConfig'
 import { setIsLoading } from '../loader/loaderActionCreators'
 import { openModalMsg, setError } from '../error/errorActionCreators'
 
-const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
-
-
-
 export const createShop = (data) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.post(`${API_URL}/shop/`, data, getConfigFormData())
+    return axios.post(`${process.env.REACT_APP_API_URL}/shop/`, data, getConfigFormData())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getShopUser()))
@@ -31,7 +27,7 @@ export const createShop = (data) => {
 export const getShopUser = () => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.get(`${API_URL}/shop?user=me`, getConfig())
+    return axios.get(`${process.env.REACT_APP_API_URL}/shop?user=me`, getConfig())
       .then((response) => dispatch(setShopUser(response.data.shop)))
       .catch(error => {
         if (error.response.status === 404) {
@@ -47,7 +43,7 @@ export const getShopProducts = (id) => {
   return (dispatch) => {
 
     dispatch(setIsLoading(true))
-    return axios.get(`${API_URL}/shop/products/${id}`, getConfig())
+    return axios.get(`${process.env.REACT_APP_API_URL}/shop/products/${id}`, getConfig())
       .then((response) => dispatch(setShopProducts(response.data.shopProducts)))
       .catch(error => {
         if (error.response.status === 404) {
@@ -61,7 +57,7 @@ export const getShopProducts = (id) => {
 export const getShopById = (id) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.get(`${API_URL}/shop/${id}`, getConfig())
+    return axios.get(`${process.env.REACT_APP_API_URL}/shop/${id}`, getConfig())
       .then((response) => dispatch(setShopSelected(response.data.shop)))
       .catch(error => {
         if (error.response.status === 404) {
@@ -75,7 +71,7 @@ export const getShopById = (id) => {
 export const deleteShop = (id) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.delete(`${API_URL}/shop/${id}`, getConfig())
+    return axios.delete(`${process.env.REACT_APP_API_URL}/shop/${id}`, getConfig())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       // .then(() => dispatch(cleanShop()))
@@ -101,7 +97,7 @@ export const setShopSelected = (data) => {
 export const updateShop = (id, formData) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.patch(`${API_URL}/shop/${id}`, formData,getConfigFormData())
+    return axios.patch(`${process.env.REACT_APP_API_URL}/shop/${id}`, formData,getConfigFormData())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getShopUser()))

@@ -1,4 +1,4 @@
-import { userActions } from './userActiontypes' 
+import { userActions } from './userActiontypes'
 import axios from 'axios'
 import { getConfig, getConfigFormData, getConfigSignUp } from '../../helper/getConfig'
 import { setIsLoading } from '../loader/loaderActionCreators'
@@ -6,13 +6,10 @@ import { openModalMsg, setError } from '../error/errorActionCreators'
 import { getShopUser } from '../shop/shopActionCreators'
 import { setIsLogin, setLogged } from '../modal/modalActionCreators'
 
-const API_URL = 'https://backend-marketplace-nodejs.herokuapp.com/api/v1'
-
-
 export const loginUser = (formData) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.post(`${API_URL}/users/login`, formData)
+    return axios.post(`${process.env.REACT_APP_API_URL}/users/login`, formData)
       .then((res) => localStorage.setItem('token', res.data.token))
       .then(() => dispatch(getUserInfo()))
       .then(() => dispatch(getShopUser()))
@@ -31,7 +28,7 @@ export const loginUser = (formData) => {
 export const signUp = (formData) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.post(`${API_URL}/users/`, formData, getConfigSignUp())
+    return axios.post(`${process.env.REACT_APP_API_URL}/users/`, formData, getConfigSignUp())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .catch(error => {
@@ -52,7 +49,7 @@ export const signUp = (formData) => {
 export const getUserInfo = () => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.get(`${API_URL}/users/`, getConfig())
+    return axios.get(`${process.env.REACT_APP_API_URL}/users/`, getConfig())
       .then((response) => dispatch(setUserInfo(response.data.userSession)))
       // .then(()=> dispatch(getProductsCart()))
       .catch(error => {
@@ -67,7 +64,7 @@ export const getUserInfo = () => {
 export const updateUserInfo = (id, formdata) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.patch(`${API_URL}/users/${id}`, formdata, getConfigFormData())
+    return axios.patch(`${process.env.REACT_APP_API_URL}/users/${id}`, formdata, getConfigFormData())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => dispatch(getUserInfo()))
@@ -85,11 +82,11 @@ export const updateUserInfo = (id, formdata) => {
 export const getUserOrders = () => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.get(`${API_URL}/users/orders`, getConfig())
+    return axios.get(`${process.env.REACT_APP_API_URL}/users/orders`, getConfig())
       .then((response) => dispatch(setUserOrders(response.data.userOrders)))
       .catch(error => {
         if (error.response.status === 404) {
-          
+
         }
       })
       .finally(()=> dispatch(setIsLoading(false)))
@@ -99,7 +96,7 @@ export const getUserOrders = () => {
 export const deleteUser = (id) => {
   return (dispatch) => {
     dispatch(setIsLoading(true))
-    return axios.delete(`${API_URL}/users/${id}`, getConfig())
+    return axios.delete(`${process.env.REACT_APP_API_URL}/users/${id}`, getConfig())
       .then(() => dispatch(setError('success')))
       .then(() => dispatch(openModalMsg()))
       .then(() => localStorage.setItem('token', ''))
